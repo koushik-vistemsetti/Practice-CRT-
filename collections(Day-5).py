@@ -1,5 +1,5 @@
 import math as m
-#1.factors of given number
+# 1.factors of given number
 '''
 n=int(input())
 c=0
@@ -18,7 +18,7 @@ if(c%2!=0):
 else:
     print('not perfect square')
 '''
-#2.check prime
+# 2.check prime
 '''
 n=int(input())
 c=0
@@ -33,7 +33,7 @@ if(c==2):
 else:
     print('not prime')
 '''
-#3.
+# 3.
 '''
 a=int(input())
 p,np=0,0
@@ -58,7 +58,7 @@ for i in range(a):
         np+=1
 print('perfect square:',p,'non perfect square:',np)
 '''
-#4.prime numbnners in given range
+# 4.prime numbnners in given range
 '''
 n=int(input())
 l=int(input())
@@ -77,7 +77,7 @@ for i in range(n,l+1):
         np+=1
 print(p,np)
 '''
-#5.
+# 5.
 '''
 n=int(input())
 x=n
@@ -112,7 +112,7 @@ for k in range(1,mi+1):
 print('lowest prime factorial',f)
 print('prime',p,'non prime',np)
 '''
-#6.
+# 6.
 '''
 n=int(input())
 s=0
@@ -125,20 +125,20 @@ for i in range(n):
     b=c
 print(s)
 '''
-#7.
+# 7.
 
-n=int(input())
-a,b,d,s=int(input()),int(input()),int(input()),0
+n = int(input())
+a, b, d, s = int(input()), int(input()), int(input()), 0
 for i in range(n):
-    print(a,end=' ')
-    s+=a
-    c=a+b+d
-    a=b
-    b=d
-    d=c
+    print(a, end=' ')
+    s += a
+    c = a+b+d
+    a = b
+    b = d
+    d = c
 print(s)
 
-#8.gcd of given number
+# 8.gcd of given number
 '''
 n1,n2=map(int,input().split())
 while(1):
@@ -149,7 +149,7 @@ while(1):
     n2=n1
     n1=a
 '''
-#9.lcm
+# 9.lcm
 '''
 a,b=map(int,input().split())
 g=0
@@ -162,9 +162,10 @@ while(1):
     a=r
 print('lcm',int((a*b)/g))
 '''
-#collection
+# collection
 '''
 l=[[4,3,6],[3,1,16],[2,5,7],[1,6,4]]
 l.sort(key=lambda a:a[1])
 print(l)
 '''
+# on 12-9-25 added to git hub
