@@ -1,5 +1,5 @@
 import math as m
-#1.
+# 1.
 '''
 n=int(input())
 s=0
@@ -10,7 +10,7 @@ while n>10:
     s+=a
 print(s)
 '''
-#2.
+# 2.
 '''
 n=int(input())
 s=1
@@ -20,7 +20,7 @@ while n>0:
     s*=a
 print(s)
 '''
-#3.
+# 3.
 '''
 n=int(input())
 s=1
@@ -30,9 +30,9 @@ while n>0:
     s*=a
 print(s)
 '''
-#sample
+# sample
 
-#4.
+# 4.
 '''
 n=int(input())
 s=0
@@ -40,7 +40,7 @@ for i in range(n+1):
     s+=i
 print(s)
 '''
-#5.
+# 5.
 '''
 n=int(input())
 s=1
@@ -48,8 +48,8 @@ for i in range(1,n+1):
     s*=i
 print(s)
 '''
-#conversionss
-#6.
+# conversionss
+# 6.
 '''
 n=int(input('number'))
 g=int(input('given base'))
@@ -78,7 +78,7 @@ elif(c==0 and (d!=10 and g!=10)):
             r+=1
     print(q)
 '''
-#7.
+# 7.
 '''
 n=int(input('number'))
 x,d,p,r,s,s1,q=n,0,0,0,0,0,0
@@ -100,7 +100,7 @@ while(r>0):
             q+=1
 print(s1)
 '''
-#8.
+# 8.
 '''
 n=int(input())
 s1=0
@@ -113,7 +113,7 @@ while n>0:
     s1+=s
 print(s1)
 '''
-#9.
+# 9.
 '''
 n=int(input())
 s=0
@@ -127,43 +127,32 @@ while n>10:
     s+=r
 print(s)
 '''
-#10.
-n=int(input())
-d=int(m.log10(n))+1
-m=0
-mi=999999
-r=0
-for i in range(1,d+1):
-    if(i%2!=0):
-        r=r*10+n%10
-    n//=10
-while(r>0):
-    if(m<(r%10)):
-        m=r%10
-    if(mi>r%10):
-        mi=r%10
-    r//=10
-print(m,mi)
-f=0
-s=1
-for i in range(1,m+1):
-    s*=i
+# 10.
+n = int(input())
+d = int(m.log10(n))+1
+m = 0
+mi = 999999
+r = 0
+for i in range(1, d+1):
+    if (i % 2 != 0):
+        r = r*10+n % 10
+    n //= 10
+while (r > 0):
+    if (m < (r % 10)):
+        m = r % 10
+    if (mi > r % 10):
+        mi = r % 10
+    r //= 10
+print(m, mi)
+f = 0
+s = 1
+for i in range(1, m+1):
+    s *= i
 print(s)
-f+=s
-s=1
-for i in range(1,mi+1):
-    s*=i
-f+=s
+f += s
+s = 1
+for i in range(1, mi+1):
+    s *= i
+f += s
 print(s)
 print(f)
-
-    
-
-
-            
-
-
-    
-
-    
-    
