@@ -24,7 +24,7 @@ print(max(f, key=f.get))
 '''
 n = list(map(int, input().split()))
 s = set(n)
-mi = min(s)5 6 5 3 4 8 5 6
+mi = min(s)
 ma = max(s)
 for i in range(mi, ma+1):
     if i not in s:
@@ -42,7 +42,7 @@ for e in n:
             c += 1
     d.append(c)
 print(d)
-'''  # 4.n=5 6 5 3 4 8 5 6 output 3= [3, 2, 3, 1, 1, 1, 3, 2]
+'''
 # 4.n=5 6 5 3 4 8 5 6 output 3= [3, 2, 3, 1, 1, 1, 3, 2]
 # n = list(map(int, input().split()))
 
