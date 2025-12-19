@@ -1,32 +1,32 @@
 # Single Linked List
 '''
-   class node:
-       def __init__(self, d):
-           self.data = d
-           self.next = None
+class node:
+    def __init__(self, d):
+        self.data = d
+        self.next = None
 
 
-   class SingleLinkedList:
-       def __init__(self):
-           self.head = None
+class SingleLinkedList:
+    def __init__(self):
+        self.head = None
 
-       def insertFirst(self, x):
-           temp = node(x)
-           if self.head == None:
-               self.head = temp
-           else:
-               temp.next = self.head
-               self.head = temp
+    def insertFirst(self, x):
+        temp = node(x)
+        if self.head == None:
+            self.head = temp
+        else:
+            temp.next = self.head
+            self.head = temp
 
-       def insertEnd(self, x):
-           temp = node(x)
-           if self.head == None:
-               self.head = temp
-           else:
-               t = self.head
-               while t.next != None:
-                   t = t.next
-               t.next = temp
+    def insertEnd(self, x):
+        temp = node(x)
+        if self.head == None:
+            self.head = temp
+        else:
+            t = self.head
+            while t.next != None:
+                t = t.next
+            t.next = temp
 
        def insertPosition(self, x, p):
            if p == 0:
