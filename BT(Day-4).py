@@ -135,6 +135,99 @@ class BinaryTree:
                 s.append(t.right)
         print(leaves)
 
+    def levelorderVertical(self):
+        d = {}
+        s = [[self.root, 0]]
+        while len(s) != 0:
+            t = s.pop(0)
+            if t[1] in d:
+                d[t[1]].append(t[0].data)
+            else:
+                d[t[1]] = [t[0].data]
+            if t[0].left:
+                s.append([t[0].left, t[1]-1])
+            if t[0].right:
+                s.append([t[0].right, t[1]+1])
+        for i in sorted(d.keys()):
+            print(d[i])
+
+    def topview(self):
+        d = {}
+        s = [[self.root, 0]]
+        while len(s) != 0:
+            t = s.pop(0)
+            if t[1] not in d:
+                d[t[1]] = [t[0].data]
+            if t[0].left:
+                s.append([t[0].left, t[1]-1])
+            if t[0].right:
+                s.append([t[0].right, t[1]+1])
+        for i in sorted(d.keys()):
+            print(d[i])
+
+    def bottomview(self):
+        d = {}
+        s = [[self.root, 0]]
+        while len(s) != 0:
+            t = s.pop(0)
+            if t[1] not in d:
+                d[t[1]] = [t[0].data]
+            else:
+                d[t[1]].append(t[0].data)
+            if t[0].left:
+                s.append([t[0].left, t[1]-1])
+            if t[0].right:
+                s.append([t[0].right, t[1]+1])
+        for i in sorted(d.keys(), reverse=False):
+            print(d[i][-1], end=" ")
+        print()
+
+    def heightoftree(self, node):
+        if node is None:
+            return 0
+        else:
+            l = self.heightoftree(node.left)
+            r = self.heightoftree(node.right)
+            return 1 + max(l, r)
+
+    def diameterTree(self, root):
+        global md
+        if root is None:
+            return 0
+        else:
+            l = self.heightoftree(root.left)
+            r = self.heightoftree(root.right)
+            d = 1+l+r
+            if md < d:
+                md = d
+            return 1+max(l, r)
+
+    def sumofDiameter(self, root):
+        global ms
+        if root is None:
+            return 0
+        else:
+            l = self.sumofDiameter(root.left)
+            r = self.sumofDiameter(root.right)
+            if ms < l+r+root.data:
+                ms = l+r+root.data
+            return max(l, r)+root.data
+
+    def check(self, node):
+        if node is None:
+            return True
+        else:
+            s = 0
+            l = self.check(node.left)
+            r = self.check(node.right)
+            if node.left:
+                s += node.left.data
+            if node.right:
+                s += node.right.data
+            if node.data != s:
+                return False
+            return l+r+node.data
+
 
 bt = BinaryTree()
 s = []
@@ -155,3 +248,21 @@ print('\nLevelOrder snake')
 bt.levelOrderSnake()
 print('\nOnly leafs')
 bt.onlyLeafs()
+print('\nLevelorder vertical')
+bt.levelorderVertical()
+print('\nTopview')
+bt.topview()
+print('\nBottomview')
+bt.bottomview()
+print('\nHeight of tree')
+print(bt.heightoftree(bt.root))
+print('\nDiameter of tree')
+md = 0
+bt.diameterTree(bt.root)
+print(md)
+ms = 0
+print('\nSum of Diameter')
+bt.sumofDiameter(bt.root)
+print(ms)
+print('\nCheck')
+print(bt.check(bt.root))
