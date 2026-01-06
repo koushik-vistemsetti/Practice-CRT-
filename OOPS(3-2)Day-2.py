@@ -154,7 +154,6 @@ class SingleLinkedList:
 
    #'''
 
-
 # Double Linked List
 
 class node:

@@ -1,3 +1,5 @@
+from collections import deque
+'''
 for x in range(-1, 2):
     for y in range(-1, 2):
         if x != 0 or y != 0:
@@ -44,3 +46,162 @@ for i in range(r):
     l = list(map(int, input().split()))
     m.append(l)
 print(connected_islands_bfs(m))
+
+def rotting_oranges(m):
+    if not m:
+        return -1
+    r = len(m)
+    c = len(m[0])
+    fresh = 0
+    q = []
+    for i in range(r):
+        for j in range(c):
+            if m[i][j] == 2:
+                q.append((i, j, 0))
+            elif m[i][j] == 1:
+                fresh += 1
+    time = 0
+    rows = [-1, 0, 1, 0]
+    cols = [0, -1, 0, 1]
+    while q:
+        c1, c2, t = q.pop(0)
+        time = max(time, t)
+        for k in range(4):
+            n1 = c1+rows[k]
+            n2 = c2+cols[k]
+            if (n1 >= 0 and n1 < r) and (n2 >= 0 and n2 < c) and m[n1][n2] == 1:
+                fresh -= 1
+                m[n1][n2] = 2
+                q.append((n1, n2, t+1))
+    if fresh == 0:
+        return time
+    return -1
+'''
+
+'''
+def prims_algorithm(adj):
+    visited = [0]*len(adj)
+    path = []  # [(n,w)]
+    queue = [(0, 0, -1)]  # w,n,p
+    c = 0
+    while queue:
+        queue.sort()
+        w, n, p = queue.pop(0)
+        if visited[n]:
+            continue
+        visited[n] = 1
+        if p != -1:
+            path.append((p, n, w))
+        for v, wt in adj.get(n, []):
+            if not visited[v]:
+                queue.append((wt, v, n))
+        c += w
+    return path, c
+
+
+m = int(input())
+li = [[int(input()) for _ in range(m)] for _ in range(m)]
+print(li)
+d = {}
+for i in range(m):
+    for j in range(m):
+        if li[i][j] > 0:
+            if i in d.keys():
+                d[i].append((j, li[i][j]))
+            else:
+                d[i] = [(j, li[i][j])]
+print(d)
+print(prims_algorithm(d))
+
+'''
+'''
+
+def krushkals_algorithm(adj):
+    parent = [i for i in range(len(adj))]
+    rank = [0]*len(adj)
+
+    def find(n):
+        if parent[n] != n:
+            parent[n] = find(parent[n])
+        return parent[n]
+
+    def union(a, b):
+        ra = find(a)
+        rb = find(b)
+        if ra != rb:
+            if rank[ra] < rank[rb]:
+                parent[ra] = rb
+            elif rank[ra] > rank[rb]:
+                parent[rb] = ra
+            else:
+                parent[rb] = ra
+                rank[ra] += 1
+
+    edges = []
+    for u in adj:
+        for v, w in adj[u]:
+            edges.append((w, u, v))
+    edges.sort()
+    mst = []
+    cost = 0
+    for w, u, v in edges:
+        if find(u) != find(v):
+            union(u, v)
+            mst.append((u, v, w))
+            cost += w
+    return mst, cost
+
+
+m = int(input())
+li = [list(map(int, input().split())) for _ in range(m)]
+print(li)
+d = {}
+for i in range(m):
+    for j in range(m):
+        if li[i][j] > 0:
+            if i in d.keys():
+                d[i].append((j, li[i][j]))
+            else:
+                d[i] = [(j, li[i][j])]
+print(d)
+print(krushkals_algorithm(d))
+
+'''
+
+
+def find(n):
+    if parent[n] != n:
+        parent[n] = find(parent[n])
+    return parent[n]
+
+
+def union(a, b):
+    ra = find(a)
+    rb = find(b)
+    if ra == rb:
+        return False
+    if size[ra] < size[rb]:
+        parent[ra] = rb
+        size[rb] += size[ra]
+    else:
+        parent[rb] = ra
+        size[ra] += size[rb]
+    return True
+
+
+v, e = int(input()), int(input())
+edges = [list(map(int, input().split())) for _ in range(e)]
+parent = [i for i in range(v)]
+size = [1]*v
+req = 0
+for n, m in edges:
+    if not union(n, m):
+        req += 1
+
+roots = set(find(i) for i in range(len(parent)))
+num_components = len(roots)
+
+if req >= num_components - 1:
+    print("can connect all components")
+else:
+    print("cannot connect all components")

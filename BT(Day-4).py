@@ -1,3 +1,5 @@
+#time complexity: O(n)
+#space complexity: O(n) for iterative and O(h) for recursive
 class Node:
     def __init__(self, data):
         self.data = data

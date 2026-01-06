@@ -1,5 +1,5 @@
 # Read graph from user in materix
-
+'''
 m = int(input())
 li = [[int(input()) for _ in range(m)] for _ in range(m)]
 print(li)
@@ -12,9 +12,10 @@ for i in range(m):
             else:
                 d[i] = [j]
 print(d)
-
-# Print Nodes of graph using BFS using queue
 '''
+# Print Nodes of graph using BFS using queue
+#time complexity O(V+E)
+#space complexity O(V)
 m=int(input())
 li=[[int(input()) for _ in range(m)] for _ in range(m)]
 print(li)
@@ -39,6 +40,8 @@ while len(q)!=0:
             q.append(i)
 #'''
 # Print Nodes of graph using DFS using recursion
+#time complexity O(V+E)
+#space complexity O(V)
 '''
 def dfs(s):
     print(s,end=" ")

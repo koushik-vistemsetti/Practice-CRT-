@@ -149,7 +149,7 @@ def first_last_occurrence(n, key):
     return first, last, c
 
 
-def threshold(l,)
+# def threshold(l,)
 
 # n=[1,2,3,4,5,6,7,8]
 # n = list(map(int, input('Enter the sorted elements: ').split()))
