@@ -128,11 +128,49 @@ print(apsp(li))
 '''
 
 
-n = int(input())
+# n = int(input())
 
-l = [list(map(int, input().split())) for _ in range(n)]
+# l = [list(map(int, input().split())) for _ in range(n)]
 
-for via in range(0, n):
-    for i, j, w in l:
-        l[i*n+j][2] = min(l[i*n+via][2]+l[via*n+j][2], l[i*n+j][2])
-print(l)
+# for via in range(0, n):
+#     for i, j, w in l:
+#         l[i*n+j][2] = min(l[i*n+via][2]+l[via*n+j][2], l[i*n+j][2])
+# print(l)
+
+
+# strongly connected components
+def dfs(graph, v, visited, stack):
+    visited[v] = True
+    for i in graph.get(v, []):
+        if not visited[i]:
+            dfs(graph, i, visited, stack)
+    stack.append(v)
+
+
+def change(graph):
+    change = {}
+    for u in graph:
+        for v in graph[u]:
+            if v in change:
+                change[v].append(u)
+            else:
+                change[v] = [u]
+    return change
+
+
+def kosaraju(graph):
+    stack = []
+    visited = {key: False for key in graph}
+    for i in graph:
+        if not visited[i]:
+            dfs(graph, i, visited, stack)
+    change = change(graph)
+    visited = {key: False for key in graph}
+    scc = []
+    while stack:
+        v = stack.pop()
+        if not visited[v]:
+            component = []
+            dfs(change, v, visited, component)
+            scc.append(component)
+    return scc
